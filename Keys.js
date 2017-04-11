@@ -1,33 +1,37 @@
-keys = {};
-
-document.addEventListener("keydown", function(key) {
+function Keys_Setup(name, element) {
 	
-	keys[key.keyCode] = true;
+	name.keys = {};
 	
-});
-
-document.addEventListener("keyup", function(key) {
+	element.addEventListener("keydown", function(key) {
+		
+		name.keys[key.keyCode] = true;
+		
+	});
 	
-	delete keys[key.keyCode];
+	element.addEventListener("keyup", function(key) {
+		
+		delete name.keys[key.keyCode];
+		
+	});
 	
-});
-
-function is_pressing(key_name) {
+	name.pressing = function(key_name) {
+		
+		return name.keys[name.key_codes[key_name]];
+		
+	}
 	
-	return keys[key_codes[key_name]];
+	name.key_codes = {
+		
+		up: 38,
+		left: 37,
+		down: 40,
+		right: 39,
+		
+		w: 87,
+		a: 65,
+		s: 83,
+		d: 68
+		
+	};
 	
 }
-
-key_codes = {
-	
-	up: 38,
-	left: 37,
-	down: 40,
-	right: 39,
-	
-	w: 87,
-	a: 65,
-	s: 83,
-	d: 68
-	
-};

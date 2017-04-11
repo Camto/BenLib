@@ -29,7 +29,7 @@ class Polygon {
 	
 	collide(polygon) {
 		
-		var walls = this.get_walls().concat(polygon.get_walls());
+		var walls = this.get_walls().concat(polygon.get_walls(this.points));
 		
 		for(var count = 0; count < walls.length; count++) {
 			
@@ -59,7 +59,7 @@ class Polygon {
 			let point1 = this.points[count];
 			let point2 = this.points[(count + 1) == this.points.length ? 0 : count + 1];
 			
-			walls.push((point1.sub(point2)).right());
+			walls.push((point1.sub(point2)).right().norm());
 			
 		}
 		
@@ -130,7 +130,48 @@ class Polygon {
 	
 	teleport(x, y) {
 		
-		console.log("Polygon.teleport() is still not made!")
+		console.log("Polygon.teleport() is still not made!");
+		
+	}
+	
+	center() {
+		
+		var xs = [];
+		var ys = [];
+		
+		for(var count = 0; count < this.points.length; count++) {
+			
+			xs.push(this.points[count][0]);
+			ys.push(this.points[count][1]);
+			
+		}
+		
+		var min_x = Math.min.apply(Math, xs);
+		var max_x = Math.max.apply(Math, xs);
+		var min_y = Math.min.apply(Math, ys);
+		var max_y = Math.max.apply(Math, ys);
+		
+		return [(min_x + max_x) / 2, (min_y + max_y) / 2];
+		
+	}
+	
+	rotate(center, d) {
+		
+		var x_rot = Math.cos(d);
+		var y_rot = Math.sin(d);
+		
+		for(var count = 0; count < this.points.length; count++) {
+			
+			this.points[count][0] -= center[0];
+			this.points[count][1] -= center[1];
+			
+			let x = this.points[count][0] * x_rot - this.points[count][1] * y_rot;
+			let y = this.points[count][0] * y_rot + this.points[count][1] * x_rot;
+			
+			this.points[count][0] = x + center[0];
+			this.points[count][1] = y + center[1];
+			
+		}
 		
 	}
 	

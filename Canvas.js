@@ -14,8 +14,8 @@ class Canvas {
 		this.canvas.style.left = "0px";
 		this.canvas.style.bottom = "0px";
 		this.canvas.style.right = "0px";
-		this.canvas.style.border = "5px solid black"; // Not necessary, but looks good.
-		// this.canvas.style.backgroundColor = "white"; // Optional.
+		// this.canvas.style.border = "5px solid black"; // Not necessary, but looks good.
+		// this.canvas.style.backgroundColor = "black"; // Optional.
 		// this.canvas.style.cursor = "none"; // Also optional.
 		
 	}
@@ -58,7 +58,7 @@ class Canvas {
 	clear_screen() {
 		
 		this.draw.clearRect(0, 0, this.width, this.height);
-	
-	}
 		
+	}
+	
 }
