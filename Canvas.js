@@ -55,6 +55,18 @@ class Canvas {
 		
 	}
 	
+	sprite(x, y, width, height, sprite) {
+		
+		this.draw.drawImage(this.PICS[sprite], x, y, width, height);
+		
+	}
+	
+	sfs(sprite_x, sprite_y, sprite_width, sprite_height, x, y, width, height, sprite_sheet) {
+		
+		this.draw.drawImage(this.PICS[sprite_sheet], (sprite_x - 1) * sprite_width, (sprite_y - 1) * sprite_height, sprite_width, sprite_height, x, y, width, height);
+		
+	}
+	
 	clear_screen() {
 		
 		this.draw.clearRect(0, 0, this.width, this.height);
