@@ -6,7 +6,9 @@ class Canvas {
 		this.canvas.width = this.width = width;
 		this.canvas.height = this.height = height;
 		this.draw = this.canvas.getContext("2d");
-		document.body.appendChild(this.canvas);
+		this.PICS = {};
+		
+		this.draw.imageSmoothingEnabled = false; // Good for pixel-art!
 		
 		this.canvas.style.position = "absolute";
 		this.canvas.style.margin = "auto";
@@ -17,6 +19,9 @@ class Canvas {
 		// this.canvas.style.border = "5px solid black"; // Not necessary, but looks good.
 		// this.canvas.style.backgroundColor = "black"; // Optional.
 		// this.canvas.style.cursor = "none"; // Also optional.
+		
+		
+		document.body.appendChild(this.canvas);
 		
 	}
 	
@@ -52,6 +57,17 @@ class Canvas {
 		this.draw.fillStyle = colour;
 		this.draw.textAlign = "center";
 		this.draw.fillText(text, x, y + (size / 2));
+		
+	}
+	
+	add_PICS() {
+		
+		for(var count = 0; count < arguments.length; count++) {
+			
+			this.PICS[arguments[count].replace(/ /g, "_")] = new Image();
+			this.PICS[arguments[count].replace(/ /g, "_")].src = "PICS/" + arguments[count] + ".png";
+			
+		}
 		
 	}
 	

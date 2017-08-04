@@ -7,7 +7,7 @@ class Polygon {
 			if(arguments.length > 3) {
 				
 				this.points = [];
-				for(var count = 0; count < arguments.length; count+= 2) {
+				for(var count = 0; count < arguments.length; count += 2) {
 					
 					this.points.push([arguments[count], arguments[count + 1]]);
 					
